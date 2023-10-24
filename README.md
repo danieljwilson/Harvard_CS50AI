@@ -1,5 +1,5 @@
 <p>
-<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/alisharify7/Harvard_CS50AI">
+<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/danieljwilson/Harvard_CS50AI">
 </p>
 
 <img src="images/Harvard_University_logo.png" height=40>&nbsp;
