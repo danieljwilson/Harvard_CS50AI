@@ -22,7 +22,7 @@ CS50’s [Introduction to Artificial Intelligence with Python](https://cs50.harv
 6. [Neural Networks](https://cs50.harvard.edu/ai/2023/weeks/5/)
 7. [Language](https://cs50.harvard.edu/ai/2023/weeks/6/)
 
-## TheKicker's CS50 Gradebook
+## CS50AI Gradebook
 
 <!-- https://github.com/gepser/markdown-progress -->
 | Week      | Type | Title | Grade|
