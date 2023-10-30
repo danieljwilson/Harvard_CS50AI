@@ -52,6 +52,9 @@ def load_data(directory):
                 pass
 
 
+directory = 'small'
+load_data(directory)
+
 def main():
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
@@ -91,7 +94,43 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
-
+    
+    # Keep track of path to target
+    
+    start = neighbors_for_person(source)
+    frontier = QueueFrontier()
+    frontier.add(start)
+    
+    # Initialize explored set
+    explored = set()
+    num_explored = 0
+    
+    # Loop until solution is found
+    while True:
+        
+        # If nothing left in frontier then no path
+        if frontier.empty():
+            raise Exception("no solution")
+        
+        # Check if target is in the frontier
+        
+        # If not choose node from frontier
+        node = frontier.remove()
+        num_explored +=1
+        
+        
+        
+    
+    # add to frontier
+    QueueFrontier.add(neighbors_for_person(source))
+    QueueFrontier.contains_state( target)
+    
+    # remove next node
+    QueueFrontier.remove()
+    # repeat
+    # when fronteir empty...return None
+    if QueueFrontier.empty():
+        
     # TODO
     raise NotImplementedError
 
