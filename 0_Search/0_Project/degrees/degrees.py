@@ -95,16 +95,17 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     
-    # Keep track of path to target
+    # Keep track of number of states explored
+    num_explored = 0
     
-    start = neighbors_for_person(source)
+    # Initialize frontier to starting point
+    start = Node(state = source, parent=None, action=None)
     frontier = QueueFrontier()
     frontier.add(start)
     
     # Initialize explored set
     explored = set()
-    num_explored = 0
-    
+        
     # Loop until solution is found
     while True:
         
@@ -112,27 +113,37 @@ def shortest_path(source, target):
         if frontier.empty():
             raise Exception("no solution")
         
-        # Check if target is in the frontier
-        
-        # If not choose node from frontier
+        # Choose a node from frontier
         node = frontier.remove()
+        print(f'Current node: {node.state}')
         num_explored +=1
         
+        # Check if target is in the frontier
+        if node.state == target: # state =  person id
+            actions = []
+            cells = []
+            # Follow parent nodes to find solution
+            while node.parent is not None:
+                actions.append(node.action)
+                cells.append(node.state)
+                node = node.parent
+            actions.reverse()
+            cells.reverse()
+            solution = (actions, cells)
+            return solution
         
+        # Mark node as explored
+        explored.add(node.state)
+        print(f'Explored: {explored}')
         
-    
-    # add to frontier
-    QueueFrontier.add(neighbors_for_person(source))
-    QueueFrontier.contains_state( target)
-    
-    # remove next node
-    QueueFrontier.remove()
-    # repeat
-    # when fronteir empty...return None
-    if QueueFrontier.empty():
+        # Add neighbors to frontier
+        for action, state in neighbors_for_person(node.state): # action = movie, state = id:
+            if not frontier.contains_state(state) and state not in explored:
+                child = Node(state=state, parent=node, action=action)
+                frontier.add(child)
         
-    # TODO
-    raise NotImplementedError
+        for node in frontier.frontier:
+            print(node.state)
 
 
 def person_id_for_name(name):
