@@ -130,7 +130,10 @@ def shortest_path(source, target):
             actions.reverse()
             cells.reverse()
             solution = (actions, cells)
-            return solution
+            
+            # Convert to list of tuples
+            reformat_solution = [(int(a), int(b)) for a, b in zip(*solution)]
+            return reformat_solution
         
         # Mark node as explored
         explored.add(node.state)
