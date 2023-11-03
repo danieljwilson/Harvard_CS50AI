@@ -51,10 +51,6 @@ def load_data(directory):
             except KeyError:
                 pass
 
-
-directory = 'small'
-load_data(directory)
-
 def main():
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
@@ -111,11 +107,11 @@ def shortest_path(source, target):
         
         # If nothing left in frontier then no path
         if frontier.empty():
-            raise Exception("no solution")
-        
+            # raise Exception("no solution")
+            return None
+                
         # Choose a node from frontier
         node = frontier.remove()
-        print(f'Current node: {node.state}')
         num_explored +=1
         
         # Check if target is in the frontier
@@ -132,21 +128,17 @@ def shortest_path(source, target):
             solution = (actions, cells)
             
             # Convert to list of tuples
-            reformat_solution = [(int(a), int(b)) for a, b in zip(*solution)]
+            reformat_solution = [(str(a), str(b)) for a, b in zip(*solution)]
             return reformat_solution
         
         # Mark node as explored
         explored.add(node.state)
-        print(f'Explored: {explored}')
         
         # Add neighbors to frontier
         for action, state in neighbors_for_person(node.state): # action = movie, state = id:
             if not frontier.contains_state(state) and state not in explored:
                 child = Node(state=state, parent=node, action=action)
                 frontier.add(child)
-        
-        for node in frontier.frontier:
-            print(node.state)
 
 
 def person_id_for_name(name):
