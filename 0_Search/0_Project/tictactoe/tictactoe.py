@@ -22,20 +22,27 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-    raise NotImplementedError
+    X_dif = sum(sublist.count(X) for sublist in board) - sum(sublist.count(O) for sublist in board)
+    
+    if X_dif == 1:
+        return O
+    else:
+        return X
 
 
 def actions(board):
     """
     Returns set of all possible actions (i, j) available on the board.
     """
-    raise NotImplementedError
+    none_positions = {(i, j) for i, row in enumerate(list_of_lists) for j, element in enumerate(row) if element is None}
+    return none_positions
 
 
 def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
+    # make a deep copy of the board first before making any changes
     raise NotImplementedError
 
 

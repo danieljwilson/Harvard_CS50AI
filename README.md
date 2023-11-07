@@ -27,6 +27,6 @@ CS50’s [Introduction to Artificial Intelligence with Python](https://cs50.harv
 <!-- https://github.com/gepser/markdown-progress -->
 | Week      | Type | Title | Grade|
 | ----------- | ----------- | ----------- | ------------- |
-| 0      | Quiz  | Scratch    | ![](https://geps.dev/progress/100)
+| 0      | Quiz  | Quiz 0    | ![](https://geps.dev/progress/100)
 | 0      | Project  | Degrees    | ![](https://geps.dev/progress/100)
 | 0      | Project  | Tictactoe    | ![](https://geps.dev/progress/100)
