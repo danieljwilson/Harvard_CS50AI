@@ -111,5 +111,25 @@ def minimax(board):
     """
     if terminal(board):
         return None
+    # O wins -> -1
+    # X wins -> 1
+    
+    player = player(board)
+    new_board = copy.deepcopy(board)
+    
+    if player == X: #then maximize
+        while terminal(new_board) == False:
+            # select action
+            actions = actions(new_board)
+            # calculate result of action (transition model)
+            new_board = result(board, action)
+            
+            # if not terminal select another action
+            
+            # if terminal test utility
+            if terminal(new_board) == True:
+                utility = utility(new_board)
+    if player == O:
+    
     
     
