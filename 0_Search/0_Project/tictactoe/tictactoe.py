@@ -114,22 +114,42 @@ def minimax(board):
     # O wins -> -1
     # X wins -> 1
     
-    player = player(board)
-    new_board = copy.deepcopy(board)
+    board_cpy = copy.deepcopy(board)
+    p = player(board)
     
-    if player == X: #then maximize
-        while terminal(new_board) == False:
-            # select action
-            actions = actions(new_board)
-            # calculate result of action (transition model)
-            new_board = result(board, action)
-            
-            # if not terminal select another action
-            
-            # if terminal test utility
-            if terminal(new_board) == True:
-                utility = utility(new_board)
-    if player == O:
+    if p == X: # Max Player
+        best_utility = float('-inf')
+        for action in actions(board_cpy):
+            new_board = result(board_cpy, action)
+            utility = min_value(new_board)
+            if utility > best_utility:
+                best_action = action
+                best_utility = utility
+        return best_action            
+                
+    if p == O: # Min Player
+        best_utility = float('inf')
+        for action in actions(board_cpy):
+            new_board = result(board_cpy, action)
+            utility = max_value(new_board)
+            if utility < best_utility:
+                best_action = action
+                best_utility = utility
+        return best_action
     
     
-    
+def max_value(board):
+    if terminal(board):
+        return (utility(board))
+    v = float('-inf')
+    for action in actions(board):
+        v = max(v, min_value(result(board, action)))
+    return v
+
+def min_value(board):
+    if terminal(board):
+        return (utility(board))
+    v = float('inf')
+    for action in actions(board):
+        v = min(v, max_value(result(board, action)))
+    return v
