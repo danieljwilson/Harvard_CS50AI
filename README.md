@@ -30,4 +30,4 @@ CS50’s [Introduction to Artificial Intelligence with Python](https://cs50.harv
 | 0      | Quiz  | Quiz 0: Search    | ![](https://geps.dev/progress/100)
 | 0      | Project  | Degrees    | ![](https://geps.dev/progress/100)
 | 0      | Project  | Tictactoe    | ![](https://geps.dev/progress/100)
-| 0      | Quiz  | Quiz 1: Knowledge    | ![](https://geps.dev/progress/100)
+| 1      | Quiz  | Quiz 1: Knowledge    | ![](https://geps.dev/progress/100)
