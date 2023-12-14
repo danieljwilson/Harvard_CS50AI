@@ -86,7 +86,6 @@ knowledge3 = And(
     Implication(CKnight, AKnight),
     # If C Knave, False
     Implication(CKnave, Not(AKnight))
-    
 )
 
 
