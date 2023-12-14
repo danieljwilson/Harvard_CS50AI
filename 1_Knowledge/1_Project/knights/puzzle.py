@@ -58,7 +58,35 @@ knowledge2 = And(
 # B says "C is a knave."
 # C says "A is a knight."
 knowledge3 = And(
-    # TODO
+    # A and B are a knight or a knave but not both
+    And(Or(AKnight, AKnave), Not(And(AKnight, AKnave))),
+    And(Or(BKnight, BKnave), Not(And(BKnight, BKnave))),
+    And(Or(CKnight, CKnave), Not(And(CKnight, CKnave))),
+    
+    # A says either "I am a knight." or "I am a knave.", but you don't know which.
+    # If A Knight, statement true
+    Implication(AKnight, Or(AKnight, AKnave)),
+    # If A Knave, statement false
+    Implication(AKnave, Not(Or(AKnight, AKnave))),
+    
+    # B says "A said 'I am a knave'."
+    # B is a Knight, true
+    Implication(BKnight, And(Implication(AKnight, AKnave), Implication(AKnave, Not(AKnave)))),
+    # If B Knave, false
+    Implication(BKnave, Not(And(Implication(AKnight, AKnave), Implication(AKnave, Not(AKnave))))),
+    
+    # B says "C is a knave."
+    # If B Knight, True
+    Implication(BKnight, CKnave),
+    # If B Knave, False
+    Implication(BKnave, Not(CKnave)),
+    
+    # C says "A is a knight."
+    # If C Knight, true
+    Implication(CKnight, AKnight),
+    # If C Knave, False
+    Implication(CKnave, Not(AKnight))
+    
 )
 
 
@@ -67,8 +95,8 @@ def main():
     puzzles = [
         ("Puzzle 0", knowledge0),
         ("Puzzle 1", knowledge1),
-        ("Puzzle 2", knowledge2)
-        # ("Puzzle 3", knowledge3)
+        ("Puzzle 2", knowledge2),
+        ("Puzzle 3", knowledge3)
     ]
     for puzzle, knowledge in puzzles:
         print(puzzle)
